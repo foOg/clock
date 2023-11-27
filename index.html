@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A simple clock</title>
+        <link href="./style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="clock">
+            <div class="outer-clock-face">
+                <div class="marking marking-one"></div>
+                <div class="marking marking-two"></div>
+                <div class="marking marking-three"></div>
+                <div class="marking marking-four"></div>
+                <div class="inner-clock-face"></div>
+                <div class="hand hour-hand"></div>    
+            </div>
+        </div>
+        <script language="javascript">
+            const hand = document.querySelector('.hand')
+
+            const rotate = () => {
+                const date = new Date()
+                const hours = (date.getHours() % 12) / 12 * 360
+                const minutes = (date.getMinutes() / 60) * (360 / 12)
+                const degrees = hours + minutes + 90
+                
+                const hand = document.querySelector('.hand')
+                hand.style.transform = `rotate(${degrees}deg)`;
+            }
+            setInterval(rotate, 1000)
+            rotate()
+        </script>
+    </body>
+</html>
